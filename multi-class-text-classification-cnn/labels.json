@@ -1,13 +1,12 @@
 [
-    "Bank account or service",
-    "Consumer Loan",
-    "Credit card",
-    "Credit reporting",
-    "Debt collection",
-    "Money transfers",
-    "Mortgage",
-    "Other financial service",
-    "Payday loan",
-    "Prepaid card",
-    "Student loan"
+    "경매",
+    "계약",
+    "대출",
+    "매매",
+    "법률",
+    "분양, 청약",
+    "세무",
+    "월세",
+    "전세",
+    "행정"
 ]

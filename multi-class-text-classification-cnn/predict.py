@@ -29,13 +29,13 @@ def predict_unseen_data():
 	np.fill_diagonal(one_hot, 1)
 	label_dict = dict(zip(labels, one_hot))
 
-	x_raw = [example['consumer_complaint_narrative'] for example in test_examples]
+	x_raw = [example['question'] for example in test_examples]
 	x_test = [data_helper.clean_str(x) for x in x_raw]
 	logging.info('The number of x_test: {}'.format(len(x_test)))
 
 	y_test = None
-	if 'product' in test_examples[0]:
-		y_raw = [example['product'] for example in test_examples]
+	if 'category' in test_examples[0]:
+		y_raw = [example['category'] for example in test_examples]
 		y_test = [label_dict[y] for y in y_raw]
 		logging.info('The number of y_test: {}'.format(len(y_test)))
 
@@ -71,10 +71,10 @@ def predict_unseen_data():
 		actual_labels = [labels[int(prediction)] for prediction in all_predictions]
 
 		for idx, example in enumerate(test_examples):
-			example['new_prediction'] = actual_labels[idx]
+			example['new_category'] = actual_labels[idx]
 		
 		with open('./data/small_samples_prediction.json', 'w') as outfile:
-			json.dump(test_examples, outfile, indent=4)
+			json.dump(test_examples, outfile, indent=4, ensure_ascii=False)
 
 		logging.critical('The accuracy is: {}'.format(correct_predictions / float(len(y_test))))
 		logging.critical('The prediction is complete')

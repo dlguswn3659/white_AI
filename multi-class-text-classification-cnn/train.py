@@ -20,6 +20,8 @@ def train_cnn():
 	parameter_file = sys.argv[2]
 	params = json.loads(open(parameter_file).read())
 
+	# global path
+
 	"""Step 1: pad each sentence to the same length and map each word to an id"""
 	max_document_length = max([len(x.split(' ')) for x in x_raw])
 	logging.info('The maximum length of all sentences: {}'.format(max_document_length))
@@ -38,7 +40,13 @@ def train_cnn():
 
 	"""Step 4: save the labels into labels.json since predict.py needs it"""
 	with open('./labels.json', 'w') as outfile:
-		json.dump(labels, outfile, indent=4)
+		# labels = labels.encode('utf-8')
+		# labels = labels.decode('unicode_escape')
+		# labels = [x.encode('utf-8') for x in labels]
+		# labels = [x.decode('unicode_escape') for x in labels]
+		# labels = [x.encode('cp949') for x in labels]
+		# labels = [x.decode('unicode_escape') for x in labels]
+		json.dump(labels, outfile, indent=4, ensure_ascii=False)
 
 	logging.info('x_train: {}, x_dev: {}, x_test: {}'.format(len(x_train), len(x_dev), len(x_test)))
 	logging.info('y_train: {}, y_dev: {}, y_test: {}'.format(len(y_train), len(y_dev), len(y_test)))
@@ -128,8 +136,13 @@ def train_cnn():
 				total_test_correct += num_test_correct
 
 			test_accuracy = float(total_test_correct) / len(y_test)
+			# try:
 			logging.critical('Accuracy on test set is {} based on the best model {}'.format(test_accuracy, path))
+			# except:
+			# 	pass
+			
 			logging.critical('The training is complete')
+
 
 if __name__ == '__main__':
 	# python3 train.py ./data/consumer_complaints.csv.zip ./parameters.json
