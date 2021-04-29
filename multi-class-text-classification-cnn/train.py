@@ -30,13 +30,13 @@ def train_cnn():
 	y = np.array(y_raw)
 
 	"""Step 2: split the original dataset into train and test sets"""
-	x_, x_test, y_, y_test = train_test_split(x, y, test_size=0.1, random_state=42)
+	x_, x_test, y_, y_test = train_test_split(x, y, test_size=0.05, random_state=42)
 
 	"""Step 3: shuffle the train set and split the train set into train and dev sets"""
 	shuffle_indices = np.random.permutation(np.arange(len(y_)))
 	x_shuffled = x_[shuffle_indices]
 	y_shuffled = y_[shuffle_indices]
-	x_train, x_dev, y_train, y_dev = train_test_split(x_shuffled, y_shuffled, test_size=0.1)
+	x_train, x_dev, y_train, y_dev = train_test_split(x_shuffled, y_shuffled, test_size=0.05)
 
 	"""Step 4: save the labels into labels.json since predict.py needs it"""
 	with open('./labels.json', 'w') as outfile:
@@ -44,8 +44,8 @@ def train_cnn():
 		# labels = labels.decode('unicode_escape')
 		# labels = [x.encode('utf-8') for x in labels]
 		# labels = [x.decode('unicode_escape') for x in labels]
-		# labels = [x.encode('cp949') for x in labels]
-		# labels = [x.decode('unicode_escape') for x in labels]
+		labels = [x.encode('cp949') for x in labels]
+		labels = [x.decode('unicode_escape') for x in labels]
 		json.dump(labels, outfile, indent=4, ensure_ascii=False)
 
 	logging.info('x_train: {}, x_dev: {}, x_test: {}'.format(len(x_train), len(x_dev), len(x_test)))

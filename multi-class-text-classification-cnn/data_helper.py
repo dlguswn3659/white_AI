@@ -25,9 +25,9 @@ def clean_str(s):
 
 def load_data_and_labels(filename):
 	"""Load sentences and labels"""
-	df = pd.read_csv(filename, compression='zip', dtype={'질문본문': object})
+	df = pd.read_csv(filename, compression='zip', dtype={'Question body': object})
 	# df = pd.read_csv(filename, dtype={'질문본문': object})
-	selected = ['label', '질문본문']
+	selected = ['label', 'Question body']
 	non_selected = list(set(df.columns) - set(selected))
 
 	df = df.drop(non_selected, axis=1) # Drop non selected columns
@@ -63,6 +63,7 @@ def batch_iter(data, batch_size, num_epochs, shuffle=True):
 			yield shuffled_data[start_index:end_index]
 
 if __name__ == '__main__':
-	input_file = './data/property_complaints.csv.zip'
+	# input_file = './data/property_complaints.csv.zip'
+	input_file = './data/property_complaints_eng.csv.zip'
 	# input_file = './data/property_complaints.csv'
 	load_data_and_labels(input_file)

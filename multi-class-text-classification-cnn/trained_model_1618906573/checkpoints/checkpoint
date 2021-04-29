@@ -1,0 +1,6 @@
+model_checkpoint_path: "/Users/ihyeonju/project/white_AI/multi-class-text-classification-cnn/trained_model_1618906573/checkpoints/model-248"
+all_model_checkpoint_paths: "/Users/ihyeonju/project/white_AI/multi-class-text-classification-cnn/trained_model_1618906573/checkpoints/model-240"
+all_model_checkpoint_paths: "/Users/ihyeonju/project/white_AI/multi-class-text-classification-cnn/trained_model_1618906573/checkpoints/model-242"
+all_model_checkpoint_paths: "/Users/ihyeonju/project/white_AI/multi-class-text-classification-cnn/trained_model_1618906573/checkpoints/model-244"
+all_model_checkpoint_paths: "/Users/ihyeonju/project/white_AI/multi-class-text-classification-cnn/trained_model_1618906573/checkpoints/model-246"
+all_model_checkpoint_paths: "/Users/ihyeonju/project/white_AI/multi-class-text-classification-cnn/trained_model_1618906573/checkpoints/model-248"

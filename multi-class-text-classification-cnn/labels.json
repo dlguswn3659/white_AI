@@ -1,12 +1,12 @@
 [
-    "경매",
-    "계약",
-    "대출",
-    "매매",
-    "법률",
-    "분양, 청약",
-    "세무",
-    "월세",
-    "전세",
-    "행정"
+    "Auction",
+    "Sales, subscription",
+    "Tax",
+    "Trading",
+    "administration",
+    "charter",
+    "contract",
+    "law",
+    "loan",
+    "monthly"
 ]

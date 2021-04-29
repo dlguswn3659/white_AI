@@ -8,6 +8,9 @@ import pandas as pd
 import tensorflow as tf
 from tensorflow.contrib import learn
 
+from googletrans import Translator
+
+
 logging.getLogger().setLevel(logging.INFO)
 
 def predict_unseen_data():
@@ -22,6 +25,25 @@ def predict_unseen_data():
 	"""Step 1: load data for prediction"""
 	test_file = sys.argv[2]
 	test_examples = json.loads(open(test_file).read())
+
+	# translator = Translator()
+	translator = Translator(service_urls=['translate.googleapis.com'])
+	# translator.translate("Der Himmel ist blau und ich mag Bananen", dest='en')
+
+	kor_category = str(test_examples[0]['category'])
+	# print(type(kor_category))
+	# print(kor_category)
+	kor_question = test_examples[0]['question']
+
+	eng_category = translator.translate("세무", dest='en')
+	eng_question = translator.translate("세금, 세무, 연말정산, 소득세", dest='en')
+	# print(eng_category.text)
+
+	test_examples[0]['category'] = eng_category.text
+	test_examples[0]['question'] = eng_question.text
+	# test_examples = test_examples.text
+
+	print(test_examples)
 
 	# labels.json was saved during training, and it has to be loaded during prediction
 	labels = json.loads(open('./labels.json').read())
